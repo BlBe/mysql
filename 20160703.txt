@@ -1,0 +1,40 @@
+/*****注意事项：文中带有 [括号中的表示可有可无] （括号中的表示提示） *****/
+数据库操作：
+    创建数据库       CREATE DATABASE 数据库名称;
+    使用数据库       USE 数据库名称;
+    删除数据库       DROP DATABASE 数据库名称;
+    查看数据库       SHOW DATABASE;
+
+数据表操作：
+    创建数据表       CREATE TABLE 表名称 （列名 数据类型 属性）CHARSET UTF8;
+        常用的数据类型：    INT         整数
+                           VARCHAR      非空格字符
+                           CHAR         空格字符
+                           DATE         日期（年月日）
+                           DATETIME     日期（年月日时分秒）
+                           TEXT         十六进制文本存储
+                           TINYINT      布尔值
+                           FLOAT(M,D)   浮点数
+        常用的属性类型：    PRIMARY KEY     主键
+                           NOT NULL        非空
+                           DEFAULT 值      默认值
+                           AUTO_INCREMENT  自动增加
+                           UNIQUE          唯一键
+    删除数据表       DESC 表名称;
+    查看数据表       SELECT 需要显示的列名（全部列为*）[函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称 [WHERE 列名=数值/列名 LIKE '%模糊值%' [AND 列名=数值]];
+                        注意：列名必须表中存在（[条件]查询）
+                    SELECT 需要显示的列名（全部列为*） [函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称1,表名称2[,表名称3] WHERE 表1.列名 = 表2.列名 [AND 表2.列名=表3.列名][AND 表x.列名=数值/列名 LIKE '%模糊值%'];
+                        注意：列名必须表中存在,多表查询必须要有联系（多表查询）
+                    SELECT 需要显示的列名（全部列为*） [函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称 HAVING 列名/别名=数值; （条件查询）
+                    SELECT 需要显示的列名（全部列为*） [函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称 GROUP BY 列名;
+                        注意：列名必须表中存在，GROUP 为分组 （分组查看）
+                    SELECT 需要显示的列名（全部列为*） [函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称 ORDER BY 列名 ASC/DESC;
+                        注意：列名必须表中存在， ASC 升序 ， DESC 降序   （排序查看）
+                    SELECT 需要显示的列名（全部列为*） [函数（[DISTINCT|ALL]列名）] [AS 别名] FROM 表名称 LIMIT 数值;    （条数查看）
+        常用的函数： COUNT      统计元组个数
+                    SUN        计算一列的总和（必须为数值型）
+                    AVG        计算一列的均值（必须为数值型）
+                    MAX        求一列的最大值
+                    MIN        求一列的最小值
+    复制数据表      CREATE TABLE 新表名称 SELECT 需要显示的列名（全部列为*）FROM 原表名称;
+    重命数据表      RENAME TABLE 原表名称 TO 新表名称;
