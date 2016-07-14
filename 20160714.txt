@@ -1,8 +1,45 @@
+﻿/*****注意事项：文中带有 [括号中的表示可有可无] （括号中的表示提示） *****/
 
+数据表操作：
+	ALTER TABLE 表名称
+	-->ADD 新列名 类型		//增加列
+	-->MODIFY 原列名 新类型		//修改列类型
+	-->CHANGE 原列名 新列名 类型	//修改列名以及类型
+	-->DROP 列名			//删除列
+	-->RENAME TO 新表名称		//修改表名称
 	
+	INSERT INTO 表名称 (列名1[,列名2...]) VALUES (数据1[,数据2...]);	//插入数据
+	UPDATE 表名称 SET 修改列名=结果 [and 修改列名2=结果...] WHERE 条件列名=条件 [and 条件列名2=条件];	//修改数据（待定）
+	DELETE FROM 表名称 WHERE 条件列名=条件;		//删除数据
+
+视图操作：
+	CREATE VIEW 视图名称 AS 查询语句（可多表查询）;		//创建视图
+	SELECT 需要显示的列名（全部列为*）FROM 视图名称;	//查看视图
 
 
+	/********************其他的查看语句请对照表********************/
 
+	RENAME VIEW 旧试图名 TO 新视图名;	//修改视图名称
+	DROP VIEW 视图名称;			//删除视图
 
-
+用户操作：
+	CREATE USER '用户名'@LOCALHOST IDENTIFIED BY 密码;	//创建地址为LOCALHOST（链接地址）的用户
+	DROP USER 用户名;	//删除用户
+	GRANT 权限 ON 范围（库.表(*代表所有)） TO 用户名;	//创建权限
+	常用权限：
+		SELECT		读取数据
+		INSERT		插入或替换数据
+		UPDATE		更改数据
+		DELETE		删除数据
+		CTEATE		创建数据表或数据库
+		ALTER		修改现有表结构
+		INDEX		创建和删除索引
+		DROP		删除数据表或数据库
+		CREATE VIEW	创建视图
+		SHOW VIEW	查询视图
+		GREATE USER	操作用户
+		DELETE USER	删除用户
 	
+	MYSQLADMIN -U 用户名 -H 服务器名(本地LOCALHOST) -P PASSWORD "新密码";(此处要有双引号)	//修改密码
+	SET PASSWORD FROM 用户名 =PASSWORD ('新密码');	//修改密码（普通用户）
+	SET PASSWORD =PASSWORD ('新密码');	//修改密码（ROOT用户）
